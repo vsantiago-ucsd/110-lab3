@@ -36,7 +36,15 @@ const rightBump = new Konva.Circle({
 });
 
 // body of lemon
-
+const body = new Konva.Ellipse({
+    x: centerX,
+    y: centerY, 
+    radiusX: 100, 
+    radiusY: 75,
+    fill:'yellow',
+    stroke: 'black',
+    strokeWidth: 4,
+});
 
 
 
@@ -53,3 +61,4 @@ const rightBump = new Konva.Circle({
 // add the bumps first and then the body on tope. 
 layer.add(leftBump);
 layer.add(rightBump); 
+layer.add(body); 
