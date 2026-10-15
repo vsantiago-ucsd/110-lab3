@@ -12,8 +12,8 @@ const layer = new Konva.Layer();
 stage.add(layer);
 
 // center of the string 
-const centerX = stage.width() / 2; 
-const centerY = stage.height() / 2; 
+//const centerX = stage.width() / 2; 
+//const centerY = stage.height() / 2; 
 
 const lemon = new Konva.Group({
     x: stage.width() / 2,
@@ -23,8 +23,8 @@ const lemon = new Konva.Group({
 
 // left bump of lemon
 const leftBump = new Konva.Circle({
-    x: centerX - 100,
-    y: centerY,
+    x: - 100,
+    y: 0,
     radius: 15, 
     fill: 'yellow',
     stroke: 'black',
@@ -33,8 +33,8 @@ const leftBump = new Konva.Circle({
 
 // right bump of lemon
 const rightBump = new Konva.Circle({
-    x: centerX + 100,
-    y: centerY,
+    x: 100,
+    y: 0,
     radius: 15, 
     fill: 'yellow',
     stroke: 'black',
@@ -43,8 +43,8 @@ const rightBump = new Konva.Circle({
 
 // body of lemon
 const body = new Konva.Ellipse({
-    x: centerX,
-    y: centerY, 
+    x: 0,
+    y: 0, 
     radiusX: 100, 
     radiusY: 75,
     fill:'yellow',
@@ -65,9 +65,9 @@ const body = new Konva.Ellipse({
 //});
 
 // add the bumps first and then the body on tope. 
-layer.add(leftBump);
-layer.add(rightBump); 
-layer.add(body); 
+lemon.add(leftBump);
+lemon.add(rightBump); 
+lemon.add(body); 
 layer.add(lemon); 
 
 // pointer cursor on hover 
@@ -83,7 +83,19 @@ lemon.on('mouseout', () => {
 // draggable is set above with draggable: true
 
 // grow when you press down
+lemon.on('mousedown', () => {
+    lemon.to({
+        scaleX: 1.5,
+        scaleY: 1.5,
+        duration: 0.5,
+    });
+});
 
-
-// shrin back when you let go
-
+// shrink back when you let go
+lemon.on('mouseup', () => {
+    lemon.to({
+        scaleX: 1,
+        scaleY: 1,
+        duration: 0.5,
+    });
+});
