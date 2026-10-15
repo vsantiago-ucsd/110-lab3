@@ -15,6 +15,12 @@ stage.add(layer);
 const centerX = stage.width() / 2; 
 const centerY = stage.height() / 2; 
 
+const lemon = new Konva.Group({
+    x: stage.width() / 2,
+    y: stage.height() /2,
+    draggable: true,
+});
+
 // left bump of lemon
 const leftBump = new Konva.Circle({
     x: centerX - 100,
@@ -62,3 +68,22 @@ const body = new Konva.Ellipse({
 layer.add(leftBump);
 layer.add(rightBump); 
 layer.add(body); 
+layer.add(lemon); 
+
+// pointer cursor on hover 
+lemon.on('mouseover', () => {
+    stage.container().style.cursor = 'pointer'; 
+}); 
+
+// back to default cursor when mouse leaves
+lemon.on('mouseout', () => {
+    stage.container().style.cursor = 'default';
+});
+
+// draggable is set above with draggable: true
+
+// grow when you press down
+
+
+// shrin back when you let go
+
